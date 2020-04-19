@@ -5,7 +5,7 @@ let upperCase = ['ABCDEFGHIJKLMNOPQRSTUVWXYZ'];
 let numbers = ['0123456789'];
 let symbols = ['!@#$%^&*(){}[]=<>/+-_|~'];
 let userChoices = [];
-let stringPassword = "";
+
 
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
@@ -38,16 +38,23 @@ function writePassword() {
     if (confirmSymbols) {
       userChoices.push(symbols);
     }
+    if (!confirmLower && !confirmUpper && !confirmNumbers && !confirmSymbols) {
+      alert("You must choose at least one character type. Press Generate Password again.");
+      return;
+    }
   
   // WHEN prompted for the length of the password
   // THEN I choose a length of at least 8 characters and no more than 128 characters
 
     let getLength = prompt("Choose the length of your password from 8 to 128 characters.");
-  
-    if (getLength < 8 || getLength > 128) {
-      alert("Incorrect. Please choose between 8 and 128 characters");
+    if (!getLength) {
+      alert("Please enter a value for the password length. Press Generate Password again.");
+    } else if (getLength < 8 || getLength > 128) {
+      alert("Incorrect. Please choose between 8 and 128 characters. Press Generate Password again.");
       return "Yes";
     }
+
+
 
 // WHEN prompted for character types to include in the password
 // THEN I choose lowercase, uppercase, numeric, and/or special characters
@@ -58,6 +65,7 @@ function writePassword() {
 // WHEN all prompts are answered
 // THEN a password is generated that matches the selected criteria
   let joinedChoices = userChoices.join('');
+  let stringPassword = "";
 
     for (var i = 0, n = joinedChoices.length; i < getLength; i++) {
       stringPassword += joinedChoices.charAt(Math.floor(Math.random() * n));
