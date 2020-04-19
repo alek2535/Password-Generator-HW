@@ -1,4 +1,4 @@
-// GIVEN I need a new, secure password
+// Arrays for confirm variables
 
 let lowerCase = ['abcdefghijklmnopqrstuvwxyz'];
 let upperCase = ['ABCDEFGHIJKLMNOPQRSTUVWXYZ'];
@@ -15,10 +15,7 @@ generateBtn.addEventListener("click", writePassword);
 
 // Write password to the #password input
 function writePassword() {
-  // WHEN I click the button to generate a password
-  // THEN I am presented with a series of prompts for password criteria
-  // WHEN prompted for password criteria
-  // THEN I select which criteria to include in the password
+  // Series of confirm statements for password criteria
   const confirmLower = confirm("Do you want to use lower case letters?");
     if (confirmLower) {
       userChoices.push(lowerCase);
@@ -35,6 +32,7 @@ function writePassword() {
     }
 
   const confirmSymbols = confirm("Do you want to use symbols?");
+
     if (confirmSymbols) {
       userChoices.push(symbols);
     }
@@ -43,9 +41,7 @@ function writePassword() {
       return;
     }
   
-  // WHEN prompted for the length of the password
-  // THEN I choose a length of at least 8 characters and no more than 128 characters
-
+  //Get character length to generate password
     let getLength = prompt("Choose the length of your password from 8 to 128 characters.");
     if (!getLength) {
       alert("Please enter a value for the password length. Press Generate Password again.");
@@ -53,17 +49,8 @@ function writePassword() {
       alert("Incorrect. Please choose between 8 and 128 characters. Press Generate Password again.");
       return "Yes";
     }
-
-
-
-// WHEN prompted for character types to include in the password
-// THEN I choose lowercase, uppercase, numeric, and/or special characters
-// WHEN I answer each prompt
-// THEN my input should be validated and at least one character type should be selected
-
   
-// WHEN all prompts are answered
-// THEN a password is generated that matches the selected criteria
+// Combine criteria to generate password
   let joinedChoices = userChoices.join('');
   let stringPassword = "";
 
@@ -71,8 +58,7 @@ function writePassword() {
       stringPassword += joinedChoices.charAt(Math.floor(Math.random() * n));
     }
 
-  // WHEN the password is generated
-  // THEN the password is either displayed in an alert or written to the page
+  //Generated password is displayed on page
 
   var passwordText = document.querySelector("#password");
 
