@@ -1,6 +1,9 @@
 # Password-Generator
 
+## Deployed Application
+
 [Password Generator](https://alek2535.github.io/Password-Generator-HW/)
+
 ## Description
 
 The purpose of this project is to create a password generator by using JavaScript. The password will be generated using inputs selected by the user. The user is able to choose if their password will contain lower case letters, upper case letters, numbers, or special characters as well as the length of the password. Producing random, criteria driven passwords are useful for those that need to protect sensitive data. 
